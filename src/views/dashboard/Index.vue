@@ -66,14 +66,32 @@
     import { useRouter } from 'vue-router'
     
     //hook vue
-    import { computed, onMounted } from 'vue'
+    import { computed, onMounted, toRefs, inject } from 'vue'
 
     //hook Toast
     import { useToast } from "vue-toastification"
-
+    
+    // define vm for use on hook
+    let vm = null
+    
     export default {
-
-        setup() {
+        created(){
+            // set vm as this
+            vm = this
+        },
+        methods: {
+            async handleClickSignOut() {
+                try {
+                    await this.$gAuth.signOut()
+                } catch (error) {
+                    console.error(error)
+                }
+            },
+        },
+        setup(props) {
+            const { isSignIn } = toRefs(props);
+            
+            const Vue3GoogleOauth = inject("Vue3GoogleOauth");
 
             //store vuex
             const store = useStore()
@@ -102,7 +120,7 @@
                 //panggil action "logout" di dalam module "auth"
                 store.dispatch('auth/logout')
                 .then(() => {
-
+                    vm.handleClickSignOut()
                     //jika berhasil, akan di arahkan ke route login
                     router.push({
                         name: 'login'
@@ -118,6 +136,8 @@
             return {
                 logout,     // <-- method logout
                 user,       // <-- state user
+                Vue3GoogleOauth,
+                isSignIn,
             }
 
         }
