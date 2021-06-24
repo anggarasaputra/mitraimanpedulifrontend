@@ -21,6 +21,8 @@ import category from './module/category'
 //import module campaign
 import campaign from './module/campaign'
 
+//import module notifications
+import notifications from './module/notification'
 
 
 //create store vuex
@@ -33,6 +35,7 @@ export default createStore({
         slider,
         category,
         campaign,
+        notifications,
     }
 
 })

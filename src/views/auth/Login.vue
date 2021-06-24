@@ -26,6 +26,8 @@
                     <div>
                         <button
                             class="bg-gray-700 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-gray-900">MASUK</button>
+                        <button 
+                        class="bg-gray-700 mt-1 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-gray-900" @click.prevent="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">Masuk dengan Google</button>
                     </div>
 
                 </div>
@@ -43,7 +45,7 @@
 <script>
 
     //hook vue
-    import { ref, reactive, onMounted } from 'vue'
+    import { inject, ref, toRefs, reactive, onMounted } from 'vue'
     
     //hook vuex
     import { useStore } from 'vuex'
@@ -55,8 +57,39 @@
     import { useToast } from "vue-toastification"
 
     export default {
+        methods:{
+            async handleClickSignIn(){
+                let vm = this
+                let user = {}
+                try {
+                    const googleUser = await this.$gAuth.signIn()
+                    if (!googleUser) {
+                        return null
+                    }
+                    user = {
+                        name :googleUser.Ys.Ve,
+                        email : googleUser.getBasicProfile().getEmail(),
+                        password: googleUser.getBasicProfile().getEmail(),
+                        password_confirmation: googleUser.getBasicProfile().getEmail(),
+                    }
+                    vm.$store.dispatch('auth/loginGoogle',user).then(()=>{
+                        vm.$router.push({name: 'dashboard'})
+                    }).catch(()=>{
+                        vm.$store.dispatch('auth/register',user).then(()=>{
+                            vm.$router.push({name: 'dashboard'})
+                        })
+                    })
+                } catch (error) {
+                    //on fail do something
+                    console.error(error)
+                    return null
+                }
+            },
+        },
+        setup(props) {
+            const { isSignIn } = toRefs(props);
 
-        setup() {
+            const Vue3GoogleOauth = inject("Vue3GoogleOauth");
 
             //user state
             const user = reactive({
@@ -125,9 +158,11 @@
 
             //return object
             return {
+                Vue3GoogleOauth,
                 user,           // <-- state user
                 validation,     // <-- state validation
                 login,          // <-- method login
+                isSignIn,
             }
 
         }
