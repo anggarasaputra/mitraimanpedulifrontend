@@ -25,9 +25,13 @@
 
                     <div>
                         <button
-                            class="bg-gray-700 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-gray-900">MASUK</button>
+                            class="bg-green-400 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-green-400">MASUK</button>
+                            <div class="text-center mt-5">
+                                <h3><b>Atau</b></h3>
+                                <br>
+                            </div>
                         <button 
-                        class="bg-gray-700 mt-1 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-gray-900" @click.prevent="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">Masuk dengan Google</button>
+                        class="bg-blue-400 mt-1 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-blue-400" @click.prevent="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">Masuk dengan Google</button>
                     </div>
 
                 </div>
