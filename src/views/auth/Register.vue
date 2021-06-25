@@ -40,7 +40,7 @@
 
                     <div>
                         <button
-                            class="bg-gray-700 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-gray-900">DAFTAR</button>
+                            class="bg-green-400 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-gray-400">DAFTAR</button>
                     </div>
 
                 </div>
