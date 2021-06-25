@@ -41,7 +41,7 @@
           let lng = res.data.data.data.length
           setInterval(()=>{
             if(vm.$store.state.notifications.notifications[i]){
-              vm.toast.success(`${vm.$store.state.notifications.notifications[i].amount}\n${vm.$store.state.notifications.notifications[i].pray}`, {
+              vm.toast.success(`${vm.$store.state.notifications.notifications[i].donatur['name']}\nBaru Saja Berdonasi`, {
                 closeButton:false,
                 hideProgressBar: true,
                 pauseOnHover:false,
@@ -56,7 +56,7 @@
                 i = i + 1
               }
             }
-          },9000)
+          },15000)
         })
       }
     },
@@ -65,8 +65,9 @@
 
 <style>
   .my-custom-toast-class{
-    min-width: 150px !important;
+    min-width: 100px !important;
     padding:10px !important;
+    font-size: 9px;
   }
   .bottom-left{
     bottom:1.5em !important;
