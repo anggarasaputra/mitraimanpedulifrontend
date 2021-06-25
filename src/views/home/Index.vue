@@ -96,7 +96,7 @@
 <script>
 
     //hook vue
-    import { computed, onMounted } from 'vue'
+    import { computed, onMounted, onUnmounted } from 'vue'
 
     //vuex
     import { useStore } from 'vuex'
@@ -110,6 +110,11 @@
     //vue content loader
     import { FacebookLoader } from 'vue-content-loader'
 
+    //hook Toast
+    import { useToast } from "vue-toastification"
+
+    let varInterval
+
     export default {
 
         components: {
@@ -119,14 +124,22 @@
         },
 
         setup() {
+            // toast
+            const toast = useToast()
+
             //store vuex
             const store = useStore()
 
             //onMounted akan menjalankan action "getCampaign" di module "campaign"
             onMounted(() => {
+                notify()
                 store.dispatch('campaign/getCampaign')
             })
-
+            
+            onUnmounted(() => {
+                toast.clear()
+                clearInterval(varInterval)
+            })
             //digunakan untuk get data  state "campaigns" di module "campaign" 
             const campaigns = computed(() => {
                 return store.state.campaign.campaigns
@@ -150,6 +163,40 @@
             function loadMore() {
                 store.dispatch('campaign/getLoadMore', nextPage.value)
             }   
+
+            function showToast(iteration, length, data){
+                let i = iteration
+                let lng = length
+                toast.success(`${data[i].donatur['name']}\nBaru Saja Berdonasi`, {
+                    closeButton:false,
+                    hideProgressBar: true,
+                    pauseOnHover:false,
+                    closeOnClick:false,
+                    icon: "fas fa-comment-dollar",
+                    position:'bottom-left',
+                    toastClassName: "my-custom-toast-class",
+                })
+                if(i == (lng-1)){
+                    i = 0
+                }else{
+                    i = i + 1
+                }
+            }
+
+            function notify(){
+                store.dispatch('notifications/notify').then(res=>{
+                    let i = 0
+                    let lng = res.data.data.data.length
+                    if(lng){
+                        showToast(i,lng,store.state.notifications.notifications)
+                    }
+                    varInterval = setInterval(()=>{
+                        if(store.state.notifications.notifications[i]){
+                            showToast(i,lng,store.state.notifications.notifications)
+                        }
+                    },15000)
+                })
+            }
 
             return {
                 campaigns,      // <-- return campaigns

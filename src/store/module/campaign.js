@@ -148,28 +148,31 @@ const campaign = {
 
         //action getDetailCampaign
         getDetailCampaign({ commit }, slug) {
+            return new Promise((resolve, reject) => {
+                //get data detail campaign ke server
+                Api.get(`/campaign/${slug}`)
+                .then(response => {
 
-            //get data detail campaign ke server
-            Api.get(`/campaign/${slug}`)
-            .then(response => {
+                    //commit ke mutation DETAIL_CAMPAIGN dengan response data
+                    commit('DETAIL_CAMPAIGN', response.data.data)
 
-                //commit ke mutation DETAIL_CAMPAIGN dengan response data
-                commit('DETAIL_CAMPAIGN', response.data.data)
+                    //commit ke mutation DETAIL_USER dengan response data
+                    commit('DETAIL_USER', response.data.data.user)
 
-                //commit ke mutation DETAIL_USER dengan response data
-                commit('DETAIL_USER', response.data.data.user)
+                    //commit ke mutation DETAIL_SUMDONATION dengan response data
+                    commit('DETAIL_SUMDONATION', response.data.data.sum_donation)
 
-                //commit ke mutation DETAIL_SUMDONATION dengan response data
-                commit('DETAIL_SUMDONATION', response.data.data.sum_donation)
+                    //commit ke mutation SET_DONATIONS dengan response data
+                    commit('SET_DONATIONS', response.data.donations)
+                    
+                    resolve(response)
+                }).catch(error => {
+                    //show error log dari response
+                    console.log(error)
 
-                //commit ke mutation SET_DONATIONS dengan response data
-                commit('SET_DONATIONS', response.data.donations)
+                    reject(error)
 
-            }).catch(error => {
-
-                //show error log dari response
-                console.log(error)
-
+                })
             })
         },
            //action searchCampaign

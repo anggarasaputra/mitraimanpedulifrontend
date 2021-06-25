@@ -76,7 +76,7 @@
                     Share : 
                 </div>
                 <br>
-                <div class="flex flex-wrap content-center seft-center items-center text-center justify-center">
+                <div v-if="sharing.title" class="flex flex-wrap content-center seft-center items-center text-center justify-center">
                     <ShareNetwork
                         v-for="network in networks"
                         :network="network.network"
@@ -179,7 +179,7 @@
 <script>
 
     //hook vue
-    import { computed, onMounted } from 'vue' // computed dan onMounted
+    import { computed, reactive, onMounted } from 'vue' // computed dan onMounted
     
     //hook vuex
     import { useStore } from 'vuex' 
@@ -199,7 +199,13 @@
 
             //onMounted akan menjalankan action "getDetailCampaign" di module "campaign"
             onMounted(() => {
-                store.dispatch('campaign/getDetailCampaign', route.params.slug)
+                store.dispatch('campaign/getDetailCampaign', route.params.slug).then(res=>{
+                    let data = res.data.data
+                    sharing.url = window.location.href
+                    sharing.title = data.title
+                    sharing.description = data.description
+                    sharing.media = data.media
+                })
             })
 
             //digunakan untuk mendapatkan data detail campaign dari state "campaign" di module "campaign" Vuex
@@ -222,13 +228,14 @@
                 return store.state.campaign.donations
             })
 
-            const sharing = {
+            const sharing = reactive({
                 url: window.location.href,
                 title: store.state.campaign.campaign.title,
                 description: store.state.campaign.campaign.description,
                 media: store.state.campaign.campaign.media,
-            }
-            const networks = [
+            })
+
+            const networks = reactive([
                // { network: 'email', name: 'Email', icon: 'far fah fa-lg fa-envelope', color: '#333333' },
                // { network: 'evernote', name: 'Evernote', icon: 'fab fah fa-lg fa-evernote', color: '#2dbe60' },
                 { network: 'facebook', name: 'Facebook', icon: 'fab fah fa-lg fa-facebook-f', color: '#1877f2' },
@@ -244,7 +251,8 @@
                // { network: 'twitter', name: 'Twitter', icon: 'fab fah fa-lg fa-twitter', color: '#1da1f2' },
                 { network: 'whatsapp', name: 'Whatsapp', icon: 'fab fah fa-lg fa-whatsapp', color: '#25d366' },
                // { network: 'wordpress', name: 'Wordpress', icon: 'fab fah fa-lg fa-wordpress', color: '#21759b' },
-            ]
+            ])
+
             return {
                 campaign,       // <-- campaign 
                 user,           // <-- user
