@@ -80,13 +80,23 @@
                 class="bg-gray-700 text-white p-2 px-3 rounded-md shadow-md focus:outline-none focus:bg-gray-900 cursor-pointer">LIHAT
                 SEMUA <i class="fa fa-long-arrow-alt-right"></i></a>
         </div>
+        <div class="container mx-auto grid grid-cols-1 p-3 sm:w-full md:w-5/12">
+        <div class="mt-5 grid grid-cols-3 gap-4" >
+            <div class="col-span-3">
+                <div class="bg-white rounded-md shadow-md p-2">
+                            <div class="text-center mt-4 mb-4">
+                                <h3><b><u>Jalin Silaturahmi</u></b></h3>
+                            </div>
+                        <div class="text-center mt-4 mb-4">
+                            <a class="bg-blue-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://www.facebook.com/profile.php?id=100070070730151"><i class="fab fa-facebook-square"></i> Facebook</a>
+                            <a class="bg-purple-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://instagram.com/mitraimanpeduli"><i class="fab fa-instagram"></i> Instagram</a>
+                            <a class="bg-green-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://api.whatsapp.com/send?phone=6281953717888"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
         <div class="text-center mt-4 mb-4">
-            <a class="bg-blue-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://www.facebook.com/profile.php?id=100070070730151"><i class="fab fa-facebook-square"></i> Facebook</a>
-            <a class="bg-purple-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://instagram.com/mitraimanpeduli"><i class="fab fa-instagram"></i> Instagram</a>
-            <a class="bg-green-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://api.whatsapp.com/send?phone=6281953717888"><i class="fab fa-whatsapp"></i> Whatsapp</a>
-        </div>
-        <div class="text-center mt-4 mb-4">
-            <br>
             <br>
             <br>
         </div>

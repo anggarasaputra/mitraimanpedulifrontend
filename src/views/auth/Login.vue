@@ -31,7 +31,7 @@
                                 <br>
                             </div>
                         <button 
-                        class="bg-blue-400 mt-1 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-blue-400" @click.prevent="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">Masuk dengan Google</button>
+                        class="bg-blue-400 mt-1 py-1 px-3 text-white rounded-md shadow-md text-xl inline-block w-full focus:outline-none focus:bg-blue-400" @click.prevent="handleClickSignIn" :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized">Masuk Akun Google</button>
                     </div>
 
                 </div>
