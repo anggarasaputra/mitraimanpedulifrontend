@@ -29,8 +29,7 @@
 <style>
   .my-custom-toast-class{
     min-width: 100px !important;
-    padding:10px !important;
-    font-size: 9px;
+    padding:20px !important;
   }
   .bottom-left{
     bottom:1.5em !important;

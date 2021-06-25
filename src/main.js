@@ -32,7 +32,7 @@ import VueSocialSharing from 'vue-social-sharing'
 
 const app = createApp(App)
 
-const gAuthOptions = { clientId: '424172903579-gj36j5msn053ff2u5lfg8fleasr2cbpp.apps.googleusercontent.com', scope: 'profile email', prompt: 'consent' }
+const gAuthOptions = { clientId: '424172903579-k11kbpppet5thol7l8r498j95f62c17g.apps.googleusercontent.com', scope: 'profile email', prompt: 'consent' }
 
 app.use(VueSocialSharing);
 
