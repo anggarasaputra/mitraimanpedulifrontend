@@ -80,7 +80,11 @@
                 class="bg-gray-700 text-white p-2 px-3 rounded-md shadow-md focus:outline-none focus:bg-gray-900 cursor-pointer">LIHAT
                 SEMUA <i class="fa fa-long-arrow-alt-right"></i></a>
         </div>
-
+        <div class="text-center mt-4 mb-4">
+            <a class="bg-blue-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://facebook.com/Mitra Iman Peduli"><i class="fab fa-facebook-square"></i> Mitra Iman Peduli</a>
+            <a class="bg-purple-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://instagram.com/mitraimanpeduli"><i class="fab fa-instagram"></i> Mitra Iman Peduli</a>
+            <a class="bg-green-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://api.whatsapp.com/send?phone=6281953717888"><i class="fab fa-whatsapp"></i> Mitra Iman Peduli</a>
+        </div>
     </div>
 </template>
 
@@ -110,7 +114,6 @@
         },
 
         setup() {
-
             //store vuex
             const store = useStore()
 

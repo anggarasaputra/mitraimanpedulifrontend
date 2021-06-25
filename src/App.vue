@@ -47,7 +47,8 @@
                 pauseOnHover:false,
                 closeOnClick:false,
                 icon: "fas fa-comment-dollar",
-                position:'bottom-left'
+                position:'bottom-left',
+                toastClassName: "my-custom-toast-class",
               })
               if(i == (lng-1)){
                 i = 0
@@ -63,5 +64,11 @@
 </script>
 
 <style>
-
+  .my-custom-toast-class{
+    min-width: 150px !important;
+    padding:10px !important;
+  }
+  .bottom-left{
+    bottom:1.5em !important;
+  }
 </style>

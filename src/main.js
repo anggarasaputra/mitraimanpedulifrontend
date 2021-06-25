@@ -28,9 +28,13 @@ import store from './store'
 
 import GAuth from 'vue3-google-oauth2'
 
+import VueSocialSharing from 'vue-social-sharing'
+
 const app = createApp(App)
 
 const gAuthOptions = { clientId: '424172903579-gj36j5msn053ff2u5lfg8fleasr2cbpp.apps.googleusercontent.com', scope: 'profile email', prompt: 'consent' }
+
+app.use(VueSocialSharing);
 
 app.use(GAuth, gAuthOptions)
 

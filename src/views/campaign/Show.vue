@@ -70,6 +70,31 @@
             </div>
 
         </div>
+        <div class="container mx-auto grid grid-cols-1 p-3 sm:w-full md:w-5/12">
+            <div class="bg-white flex flex-wrap rounded-md shadow-md p-3">
+                <div class="text-lg font-semibold">
+                    Share : 
+                </div>
+                <br>
+                <div class="flex flex-wrap content-center seft-center items-center text-center justify-center">
+                    <ShareNetwork
+                        v-for="network in networks"
+                        :network="network.network"
+                        :key="network.network"
+                        :style="{backgroundColor: network.color}"
+                        :url="sharing.url"
+                        :title="sharing.title"
+                        :media="sharing.media"
+                        :description="sharing.description"
+                        class="text-white p-2 rounded-md mr-2 mt-2"
+                    >
+                        <i :class="network.icon"></i>&nbsp;
+                        <span>{{ network.name }}</span>
+                    </ShareNetwork>
+                </div>
+            </div>
+        </div>
+
 
         <div class="container mx-auto grid grid-cols-1 p-3 sm:w-full md:w-5/12">
 
@@ -197,11 +222,36 @@
                 return store.state.campaign.donations
             })
 
+            const sharing = {
+                url: window.location.href,
+                title: store.state.campaign.campaign.title,
+                description: store.state.campaign.campaign.description,
+                media: store.state.campaign.campaign.media,
+            }
+            const networks = [
+                { network: 'email', name: 'Email', icon: 'far fah fa-lg fa-envelope', color: '#333333' },
+                { network: 'evernote', name: 'Evernote', icon: 'fab fah fa-lg fa-evernote', color: '#2dbe60' },
+                { network: 'facebook', name: 'Facebook', icon: 'fab fah fa-lg fa-facebook-f', color: '#1877f2' },
+                { network: 'instapaper', name: 'Instapaper', icon: 'fas fah fa-lg fa-italic', color: '#428bca' },
+                { network: 'line', name: 'Line', icon: 'fab fah fa-lg fa-line', color: '#00c300' },
+                { network: 'linkedin', name: 'LinkedIn', icon: 'fab fah fa-lg fa-linkedin', color: '#007bb5' },
+                { network: 'pinterest', name: 'Pinterest', icon: 'fab fah fa-lg fa-pinterest', color: '#bd081c' },
+                { network: 'quora', name: 'Quora', icon: 'fab fah fa-lg fa-quora', color: '#a82400' },
+                { network: 'reddit', name: 'Reddit', icon: 'fab fah fa-lg fa-reddit-alien', color: '#ff4500' },
+                { network: 'telegram', name: 'Telegram', icon: 'fab fah fa-lg fa-telegram-plane', color: '#0088cc' },
+                { network: 'messenger', name: 'Messenger', icon: 'fab fah fa-lg fa-facebook-messenger', color: '#0084ff' },
+                { network: 'tumblr', name: 'Tumblr', icon: 'fab fah fa-lg fa-tumblr', color: '#35465c' },
+                { network: 'twitter', name: 'Twitter', icon: 'fab fah fa-lg fa-twitter', color: '#1da1f2' },
+                { network: 'whatsapp', name: 'Whatsapp', icon: 'fab fah fa-lg fa-whatsapp', color: '#25d366' },
+                { network: 'wordpress', name: 'Wordpress', icon: 'fab fah fa-lg fa-wordpress', color: '#21759b' },
+            ]
             return {
                 campaign,       // <-- campaign 
                 user,           // <-- user
                 sumDonation,    // <-- sumDonation
                 donations,      // <-- donations
+                sharing,      // <-- sharing
+                networks,      // <-- networks
             }
         }
 
