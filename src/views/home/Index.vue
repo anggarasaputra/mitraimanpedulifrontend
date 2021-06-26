@@ -15,8 +15,10 @@
                     <div class="col-span-4">
                         <div class="bg-white rounded-md shadow-md p-2">
                             <div class="md:flex rounded-xl md:p-0">
-                                <img class="w-full h-34 md:w-56 rounded object-cover"
-                                    :src="campaign.image" width="384" height="512">
+                                <router-link :to="{name: 'campaign.show', params:{slug: campaign.slug }}">
+                                <img class="w-full h-40 md:w-64 rounded object-cover"
+                                    :src="campaign.image" width="400" height="550">
+                                    </router-link>
                                 <div class="w-full pt-6 p-5 md:p-3 text-center md:text-left space-y-4">
                                     <router-link :to="{name: 'campaign.show', params:{slug: campaign.slug }}">
                                         <p class="text-sm font-semibold">
@@ -80,22 +82,21 @@
                 class="bg-gray-700 text-white p-2 px-3 rounded-md shadow-md focus:outline-none focus:bg-gray-900 cursor-pointer">LIHAT
                 SEMUA <i class="fa fa-long-arrow-alt-right"></i></a>
         </div>
-        <div class="container mx-auto grid grid-cols-1 p-3 sm:w-full md:w-5/12">
-        <div class="mt-5 grid grid-cols-3 gap-4" >
-            <div class="col-span-3">
-                <div class="bg-white rounded-md shadow-md p-2">
-                            <div class="text-center mt-4 mb-4">
-                                <h3><b><u>Jalin Silaturahmi</u></b></h3>
-                            </div>
-                        <div class="text-center mt-4 mb-4">
-                            <a class="bg-blue-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://www.facebook.com/profile.php?id=100070070730151"><i class="fab fa-facebook-square"></i> Facebook</a>
-                            <a class="bg-purple-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://instagram.com/mitraimanpeduli"><i class="fab fa-instagram"></i> Instagram</a>
-                            <a class="bg-green-700 text-white p-2 rounded-md mr-2" target="_blank" href="https://api.whatsapp.com/send?phone=6281953717888"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+
+                <div class="container mx-auto grid grid-cols-1 p-3 sm:w-full md:w-5/12">
+                         <div class="flex justify-center bg-indigo-50 p-4 mb-5">
+                            <h1 class="text-xl text-blue-500">Hubungi Kami</h1>
                         </div>
-                    </div>
+                            <div class="bg-indigo-50 shadow-xl rounded-lg">
+                                <ul class="divide-y divide-gray-300">
+                                    <a class="text-center text-white p-2 rounded-md mr-2 w-screen" target="_blank" href="https://www.facebook.com/profile.php?id=100070070730151"><li class="p-4 bg-blue-700 justify-center"><i class="fab fa-facebook-square"></i> Facebook </li></a>
+                                    <a class="text-center text-white p-2 rounded-md mr-2 w-screen" target="_blank" href="https://instagram.com/mitraimanpeduli"><li class="p-4 bg-yellow-400 justify-center"><i class="fab fa-instagram"></i> Instagram</li></a>
+                                    <a class="text-center text-white p-2 rounded-md mr-2 w-screen" target="_blank" href="https://api.whatsapp.com/send?phone=6281953717888"><li class="p-4 bg-green-500 justify-center"><i class="fab fa-whatsapp"></i> Whatsapp</li></a>
+                                </ul>
+                            
+                        </div>
                 </div>
-            </div>
-         </div>
+
         <div class="text-center mt-4 mb-4">
             <br>
             <br>
